@@ -34,6 +34,7 @@ jobs:
           version_format: "${major}.${minor}.${patch}.dev${increment}"
           tag_prefix: ""
           debug: true
+          namespace: "test"
       - name: test
         run: |
           echo ${{ steps.version.outputs.version }}
