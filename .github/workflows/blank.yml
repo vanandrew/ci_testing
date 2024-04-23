@@ -30,11 +30,13 @@ jobs:
         uses: paulhatch/semantic-version@v5.4.0
         with:
           bump_each_commit: true
-          bump_each_commit_patch_pattern: "(PATCH)"
+          bump_each_commit_patch_pattern: "(PATCH-great)"
           version_format: "${major}.${minor}.${patch}.dev${increment}"
           tag_prefix: ""
           debug: true
+          namespace: great
       - name: test
         run: |
           echo ${{ steps.version.outputs.version }}
           echo ${{ steps.version.outputs.version_tag }}
+          echo ${{github.ref_name == 'main' && 'latest' || format('actions-{0}', github.head_ref || github.ref_name)}}
