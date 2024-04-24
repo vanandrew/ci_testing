@@ -28,10 +28,12 @@ jobs:
           fetch-depth: 0
       - name: random
         run: |
-          echo ${{ github.actor != 'dependabot[bot]' && 'hi' || github.actor != 'dependabot[bot]' && 'hi2' || 'hi3' }}
+          echo ${{ github.actor == 'dependabot[bot]' && 'hi' || github.actor != 'dependabot[bot]' && 'hi2' || 'hi3' }}
       - id: version
         uses: paulhatch/semantic-version@v5.4.0
         with:
+          major_pattern: "(MAJOR-great)"
+          minor_pattern: "(MINOR-great)"
           bump_each_commit: true
           bump_each_commit_patch_pattern: "(PATCH-great)"
           version_format: "${major}.${minor}.${patch}.dev${increment}"
