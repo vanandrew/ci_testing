@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
       - name: random
         run: |
-          echo ${{ github.actor != 'dependabot[bot]' && format('actions-dependabot-{0}', github.event.number) || github.actor == 'dependabot[bot]' && 'hi2' || 'hi3' }}
+          echo ${{ github.actor != 'dependabot[bot]' && format('actions-dependabot-{0}', github.event.number) || github.actor != 'dependabot[bot]' && 'hi2' || 'hi3' }}
       - id: version
         uses: paulhatch/semantic-version@v5.4.0
         with:
