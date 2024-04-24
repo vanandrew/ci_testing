@@ -41,6 +41,10 @@ jobs:
           debug: true
           namespace: great
           change_path: "src"
+      - name: debug
+        run: echo $DEBUG_OUTPUT
+        env:
+          DEBUG_OUTPUT: ${{ steps.version.outputs.debug_output }}
       - name: test
         run: |
           echo ${{ steps.version.outputs.version }}
